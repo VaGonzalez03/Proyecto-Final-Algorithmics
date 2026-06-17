@@ -22,7 +22,7 @@ class Ventana1(QWidget):
 
 
     def nextclick(self):
-        self.tw=TestWin()
+        self.tw=Ventana2()
         self.hide()
 
     def connects(self):
@@ -33,7 +33,6 @@ class Ventana1(QWidget):
         self.resize(win_width, win_height)
         self.move(win_x, win_y)
         v_line=QVBoxLayout()
-        layout=QHBoxLayout()
         v_line.addWidget(self.btn_incial, alignment= Qt.AlignCenter)
         v_line.addWidget(self.btn_intrucciones, alignment= Qt.AlignCenter)
         v_line.addWidget(self.btn_next, alignment= Qt.AlignCenter)
@@ -43,4 +42,3 @@ if __name__ == '__main__':
     app=QApplication([])
     mw=Ventana1()
     sys.exit(app.exec_())
-
