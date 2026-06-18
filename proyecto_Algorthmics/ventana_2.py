@@ -130,16 +130,18 @@ class Ventana2(QWidget):
                 texto_total = str(nuevo_total)
                 celda_total = QTableWidgetItem(texto_total)
                 self.btn_tabla.setItem(row, 3, celda_total)
-
+              
+                # Bloquear la edición de la celda del total para que el usuario no pueda modificarla
                 item_total_actualizado = self.btn_tabla.item(row, 3)
                 if item_total_actualizado:
                     item_total_actualizado.setFlags(item_total_actualizado.flags() ^ Qt.ItemIsEditable)
                 
             except ValueError:
-                # ecepción para datos no numéricos o datos vacíos 
+                # excepción para datos no numéricos o datos vacíos 
                 celda_error = QTableWidgetItem("0.0")
                 self.btn_tabla.setItem(row, 3, celda_error)
-
+              
+                # Bloquear la edición de la celda del total para que el usuario no pueda modificarla
                 item_error = self.btn_tabla.item(row, 3)
                 if item_error:
                     item_error.setFlags(item_error.flags() ^ Qt.ItemIsEditable)
