@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, 
-                            QWidget, QLineEdit, QHBoxLayout, QGroupBox, QRadioButton, QListWidget)
+                            QWidget, QLineEdit, QHBoxLayout, QGroupBox, QRadioButton, QMessageBox)
 
 from text import *
 from ventana_2 import *
@@ -43,6 +43,23 @@ class Ventana1(QWidget):
 
 
     def nextclick(self):
+
+        # Obtener los nombres del contratista y cliente, eliminando espacios en blanco al inicio y al final
+        contratista = self.txt_nombre_contratista.text().strip()
+        cliente = self.txt_nombre_cliente.text().strip()
+        
+        # verificacion de que los campos no estén vacíos
+        if contratista == "" or cliente == "":
+
+            alerta = QMessageBox(self)
+            alerta.setIcon(QMessageBox.Critical) # Icono de error crítico (X roja)
+            alerta.setWindowTitle("Datos Faltantes")
+            alerta.setText("No se puede iniciar el generador.")
+            alerta.setInformativeText("Debe ingresar obligatoriamente tanto el Nombre del Contratista como el Nombre del Cliente.")
+            alerta.exec_()
+            
+            return
+
         # Funcion para pasar a la siguiente ventana
         self.tw=Ventana2()
         self.hide()
