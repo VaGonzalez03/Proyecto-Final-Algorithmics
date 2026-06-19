@@ -67,12 +67,8 @@ class Ventana3(QWidget):
             except (ValueError, TypeError):
                 pass
 
-        # Sumar al total general
-            try:
-                total_general += float(total)
-            except (ValueError, TypeError):
-                pass
-
+        datos += "-"*60 + "\n"
+        datos += f"{'TOTAL GENERAL:':<35}\t{total_general:>8}\n"
         # Guardar archivo
         try:
             with open("cotizacion.txt", "w", encoding="utf-8") as file:
