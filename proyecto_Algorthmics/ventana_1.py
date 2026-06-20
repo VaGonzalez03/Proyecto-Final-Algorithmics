@@ -78,5 +78,22 @@ class Ventana1(QWidget):
         
 if __name__ == '__main__':
     app=QApplication([])
+    
+    # Aplicar un estilo de gradiente a todas las ventanas y personalizar los colores de los textos(excepto los mensajes de alerta)
+    app.setStyleSheet("""
+        Ventana1, Ventana2, Ventana3 {
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                        stop:0 #068562, 
+                                        stop:1 #013F4A);
+        }
+        Ventana1 QLabel, Ventana2 QLabel, Ventana3 QLabel {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        QMessageBox QLabel {
+            color: #000000;
+            font-weight: normal;
+        }
+    """)
     mw=Ventana1()
     sys.exit(app.exec_())
